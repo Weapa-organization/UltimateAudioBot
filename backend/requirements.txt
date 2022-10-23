@@ -1,0 +1,8 @@
+fastapi==0.68.0
+uvicorn==0.12.2
+pydantic==1.10.2
+python-dotenv==0.21.0
+motor==2.5.1
+manage-fastapi==1.1.1
+
+python-decouple==3.6
