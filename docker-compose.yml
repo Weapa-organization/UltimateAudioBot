@@ -1,0 +1,39 @@
+version: '3'
+
+services:
+  backend:
+    build:
+      context: ./backend
+      dockerfile: ./docker/Dockerfile
+    command: run-dev
+    volumes:
+      - ./backend/app/:/code/app
+    environment:
+      - PROJECT_NAME=Ultimate-bot-api
+      - MONGODB_URL=mongodb://projectWeapo:projectWeapo@192.168.1.30:27017
+    ports:
+      - 8080:80
+
+
+  telegram-bot:
+    build:
+      context: ./
+      dockerfile: ./bot/docker-compose/Dockerfile
+    # command: run-telegram-bot
+    # volumes:
+    #   - ./app:/app
+    environment:
+      - "BOT_TOKEN=800576718:AAEOb4cE0US8s4V4irSLeY80xdYhX4RWaqM"
+      - BOT_NAME=comedores-ugr-api
+      - PULSE_SERVER=unix:${XDG_RUNTIME_DIR}/pulse/native
+    user: 1000:1000
+    volumes:
+      - ./bot/src/audios:/app/audios
+      - ./bot/src/:/app/
+      - /tmp/.X11-unix:/tmp/.X11-unix
+      - /etc/alsa:/etc/alsa
+      - "/usr/share/alsa:/usr/share/alsa"
+      - "~/.config/pulse:/.config/pulse"
+      - ${XDG_RUNTIME_DIR}/pulse/native:${XDG_RUNTIME_DIR}/pulse/native
+    devices:
+      - /dev/snd
