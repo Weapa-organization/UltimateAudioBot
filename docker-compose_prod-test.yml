@@ -8,7 +8,7 @@ services:
     command: run-dev
     environment:
       - PROJECT_NAME=Ultimate-bot-api
-      - MONGODB_URL=mongodb://projectWeapo:projectWeapo@192.168.1.30:27017
+      - MONGODB_URL=mongodb://xxxxx:xxxxxx@192.168.1.1:27017
     ports:
       - 8080:80
 
@@ -21,7 +21,7 @@ services:
     # volumes:
     #   - ./app:/app
     environment:
-      - "BOT_TOKEN=800576718:AAEOb4cE0US8s4V4irSLeY80xdYhX4RWaqM"
+      - "BOT_TOKEN=xxxxxxxxxxxxxxxxx"
       - BOT_NAME=comedores-ugr-api
       - PULSE_SERVER=unix:${XDG_RUNTIME_DIR}/pulse/native
     user: 1000:1000
